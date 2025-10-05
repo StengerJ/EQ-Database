@@ -1,16 +1,43 @@
 from DBMS.DBFile import DBFile
-"""
-Main program file for my database system, which I am naming EQ_DBMS. 
-I kinda of want to turn this into a self sustained project ouside of class so thats why I am giving it a name lol.
+from logger.LoggerSetup import setup_logger
 
-In this file I am just going to throw in a demo of the program, throwing you into a loop of creating a table and then collumns.
-Inserting some values, deleting them, and then printing the file and purging the commits etc...
 """
-
+Database Management Systems Programming assignment 1
+Joshua Stenger
+Due date 10/8/2025
+Description: This is program implements a standard input version of a database management system that I am naming EQ_Database.
+"""
 def main():
-    db_file = DBFile()
+    
+    setup_logger()
+    dbfile = DBFile()
 
-    db_file.createTable()
+    while True:
+        print('------------------------------------------------------------------------')
+        print('Welcome to the EQ_Database management system by Joshua Stenger! (Standard input version)')
+        print('------------------------------------------------------------------------')
+
+        print('Please select one of the following options(Enter an integer responding to the option. Ex: 1):')
+        print('1. Create a new table')
+        print('2. Insert data into a table')
+        print('3. Remove data from a table')
+        print('4. Query a table')
+        print('5. Exit EQ_Database')
+
+        match int(input('Enter option: ')):
+            case 1:
+                dbfile.createTable()
+            case 2:
+                print('WARNING: If your input is longer than the allocated length for that collumn, data will be truncated.')
+            case 3:
+                print('Remove data from a table - Not yet implemented')
+            case 4:
+                print('Query a table - Not yet implemented')
+            case 5:
+                print('Exiting EQ_Database, goodbye!')
+                break
+            case _:
+                print('Invalid input, input a whole integer corresponding to the options. Example: 1')
 
 if __name__ == '__main__':
     main()

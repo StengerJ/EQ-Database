@@ -1,12 +1,5 @@
-import logging
-from logging.handlers import RotatingFileHandler
+import logging.config
 
-def setup_logger(log_file="EQ_DMBS.log"):
-    handler = RotatingFileHandler(log_file, maxBytes=5_000_000, backupCount=3)
-    formatter = logging.Formatter("%(asctime)s [%(levelname)s] (%(name)s): %(message)s")
-    handler.setFormatter(formatter)
+def setup_logger(log_file="logs/EQ_DMBS.log"):
+    logging.config.fileConfig('logger/logger.conf')
 
-    root = logging.getLogger()
-    root.setLevel(logging.INFO)
-    root.addHandler(handler)
-    root.addHandler(logging.StreamHandler())
