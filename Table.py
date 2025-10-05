@@ -9,3 +9,6 @@ class Table:
     def print_collumns(self):
         for col in self._collumns:
             print(col ,' ', col[col])
+
+    def addCollumn(self,argName:str,argLength:int):
+        self._collumns.append({argName:argLength})
